@@ -2,7 +2,7 @@
   "name": "caps-hub",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "hub.js",
   "scripts": {
     "test": "jest"
   },

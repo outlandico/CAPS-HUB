@@ -3,14 +3,18 @@
 'use strict';
 
 // Import the event pool singleton
-const eventPool = require('./eventPool');
+const events = require('./eventPool');
+const driver = require('./driver');
+const vendor = require('./vendor');
 
-// Listen to all events from the event pool
-eventPool.onAny((eventName, eventData) => {
-  // Log the event with timestamp and payload information
-  console.log('EVENT:', {
-    event: eventName,
-    time: new Date().toISOString(),
-    payload: eventData
-  });
+
+
+events.on("ready-for-pickup", function (payload) {
+  console.log("Hub:", payload);
+  events.emit("pickup", payload);
+});
+
+events.on("package-delivered", function (payload) {
+  console.log("Hub-package-delivered:", payload);
+  events.emit("delivered", payload);
 });
